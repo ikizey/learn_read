@@ -1,29 +1,40 @@
-from tkinter import *
 from random import shuffle
+from tkinter import *
+from playsound import playsound
 
 window = Tk()
+window.title = ("LearnRead")
+w = 500
+h = 300
+ws = window.winfo_screenwidth() # width of the screen
+hs = window.winfo_screenheight() # height of the screen
+# calculate x and y coordinates for the Tk root window
+x = int((ws/2) - (w/2))
+y = int((hs/2) - (h/2))
+window.geometry(f"{w}x{h}+{x}+{y}")
 
-window.title = ("Читайка")
-window.geometry('550x300')
-
-l = ["мама", "папа", "молоко",
-     "мы", "вы", "ты",
-     "каша", "вода", "море",
-     "стол", "стул", "мыло"]
+l = [("мама", "mama"), ("папа", "papa"), ("молоко", "moloko"),
+     ("мы", "my"), ("вы", "vy"), ("ты", "ty"),
+     ("каша", "kasha"), ("вода", "voda"), ("море", "more"),
+     ("стол", "stol"), ("стул", "stul"), ("мыло", "mylo")]
 
 shuffle(l)
-d = {}
+
+def play_mp3(mp3):
+    def x():
+        playsound(mp3)
+    return x
+
 buttons = []
 r, c = 0, 0
 for i, word in enumerate(l):
-    d[i] = word
     if i % 3 == 0:
         c = 0
         r += 1
     else:
         c += 1
-    print(i, i%3, c, r)
-    buttons.append(Button(window, text=word, font=("Arial Bold", 50)))
+    ps = play_mp3(f"sounds/{word[1]}.mp3")
+    buttons.append(Button(window, text=word[0], font=("Arial Bold", 50), command=ps))
     buttons[i].grid(column=c, row=r)
 
 
