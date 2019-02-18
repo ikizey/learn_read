@@ -4,8 +4,9 @@ from playsound import playsound
 
 window = Tk()
 window.title = ("LearnRead")
-w = 500
-h = 300
+window.configure(background='green')
+w = 620
+h = 510
 ws = window.winfo_screenwidth() # width of the screen
 hs = window.winfo_screenheight() # height of the screen
 # calculate x and y coordinates for the Tk root window
@@ -16,7 +17,11 @@ window.geometry(f"{w}x{h}+{x}+{y}")
 l = [("мама", "mama"), ("папа", "papa"), ("молоко", "moloko"),
      ("мы", "my"), ("вы", "vy"), ("ты", "ty"),
      ("каша", "kasha"), ("вода", "voda"), ("море", "more"),
-     ("стол", "stol"), ("стул", "stul"), ("мыло", "mylo")]
+     ("стол", "stol"), ("стул", "stul"), ("мыло", "mylo"),
+     ("хлеб", "hleb"), ("яблоко", "yabloko"), ("дом", "dom"),
+     ("суп", "sup"), ("обед", "obed"), ("игрушка", "igrushka"),
+     ("рот", "rot"), ("нос", "nos"), ("ухо", "uho"),
+     ("кот", "kot"), ("дети", "deti"), ("машина", "mashina")]
 
 shuffle(l)
 
