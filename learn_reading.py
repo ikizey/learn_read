@@ -5,8 +5,8 @@ from playsound import playsound
 window = Tk()
 window.title = ("LearnRead")
 window.configure(background='green')
-w = 620
-h = 510
+w = 1250
+h = 720
 ws = window.winfo_screenwidth() # width of the screen
 hs = window.winfo_screenheight() # height of the screen
 # calculate x and y coordinates for the Tk root window
@@ -21,6 +21,13 @@ l = [("мама", "mama"), ("папа", "papa"), ("молоко", "moloko"),
      ("хлеб", "hleb"), ("яблоко", "yabloko"), ("дом", "dom"),
      ("суп", "sup"), ("обед", "obed"), ("игрушка", "igrushka"),
      ("рот", "rot"), ("нос", "nos"), ("ухо", "uho"),
+     ("сон", "son"), ("телефон", "telefon"), ("чай", "chai"),
+     ("кофе", "kofe"), ("собака", "sobaka"), ("бегать", "begat"),
+     ("еда", "eda"), ("сыр", "syr"), ("корова", "korova"),
+     ("мышь", "mysh"), ("чайник", "chainik"), ("котлета", "kotleta"),
+     ("зуб", "zub"), ("круг", "krug"), ("день", "den"),
+     ("сегодня", "segodnya"), ("фигура", "figura"), ("много", "mnogo"),
+     ("поезд", "poezd"), ("магазин", "magazin"),
      ("кот", "kot"), ("дети", "deti"), ("машина", "mashina")]
 
 shuffle(l)
@@ -33,13 +40,13 @@ def play_mp3(mp3):
 buttons = []
 r, c = 0, 0
 for i, word in enumerate(l):
-    if i % 3 == 0:
+    if i % 4 == 0:
         c = 0
         r += 1
     else:
         c += 1
     ps = play_mp3(f"sounds/{word[1]}.mp3")
-    buttons.append(Button(window, text=word[0], font=("Arial Bold", 50), command=ps))
+    buttons.append(Button(window, text=f"{i+1}.{word[0]}", font=("Arial Bold", 50), command=ps))
     buttons[i].grid(column=c, row=r)
 
 
